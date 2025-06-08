@@ -15,271 +15,215 @@
 
         body {
             font-family: 'JetBrains Mono', monospace;
-            background: #0a0e27;
-            color: #00ff41;
+            background: #1e1e1e;
+            color: #ffffff;
             overflow: hidden;
             height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .terminal-container {
-            height: 100vh;
+            height: calc(100vh - 40px);
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 100%);
+            background: #2a2a2a;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            backdrop-filter: blur(20px);
         }
 
         .terminal-header {
-            background: #16213e;
-            padding: 12px 20px;
-            border-bottom: 2px solid #00ff41;
+            background: linear-gradient(180deg, #3c3c3c 0%, #2a2a2a 100%);
+            padding: 12px 16px;
             display: flex;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 255, 65, 0.3);
+            border-bottom: 1px solid #404040;
+            position: relative;
         }
 
         .terminal-controls {
             display: flex;
-            gap: 10px;
-            margin-right: 20px;
+            gap: 8px;
+            margin-right: 16px;
         }
 
         .control-btn {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
+            position: relative;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
         }
 
         .control-btn:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 10px currentColor;
+            transform: scale(1.1);
         }
 
-        .close { background: #ff6b6b; }
-        .minimize { background: #ffd93d; }
-        .maximize { background: #6bcf7f; }
+        .close { 
+            background: linear-gradient(135deg, #ff5f57 0%, #ff3b30 100%);
+        }
+        
+        .minimize { 
+            background: linear-gradient(135deg, #ffbd2e 0%, #ffaa00 100%);
+        }
+        
+        .maximize { 
+            background: linear-gradient(135deg, #28ca42 0%, #20b038 100%);
+        }
 
         .terminal-title {
-            color: #00ff41;
+            color: #ffffff;
             font-weight: 500;
-            text-shadow: 0 0 10px #00ff41;
+            font-size: 13px;
+            opacity: 0.8;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .terminal-body {
             flex: 1;
             padding: 20px;
             overflow-y: auto;
-            background: rgba(10, 14, 39, 0.9);
+            background: #1a1a1a;
+            color: #ffffff;
         }
 
         .output-line {
-            margin: 5px 0;
-            line-height: 1.4;
-            animation: fadeIn 0.3s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            margin: 3px 0;
+            line-height: 1.5;
+            font-size: 14px;
         }
 
         .prompt {
-            color: #00ff41;
-            text-shadow: 0 0 5px #00ff41;
+            color: #7dd3fc;
+            font-weight: 500;
         }
 
         .command {
-            color: #64ffda;
+            color: #ffffff;
         }
 
         .error {
-            color: #ff6b6b;
+            color: #fb7185;
         }
 
         .success {
-            color: #6bcf7f;
+            color: #4ade80;
+            font-weight: 500;
         }
 
         .info {
-            color: #ffd93d;
+            color: #fbbf24;
         }
 
         .text {
-            color: #e0e0e0;
+            color: #d1d5db;
         }
 
         .highlight {
-            color: #ff9800;
-            font-weight: bold;
+            color: #c084fc;
+            font-weight: 600;
         }
 
         .input-line {
             display: flex;
             align-items: center;
-            margin-top: 10px;
+            padding: 16px 20px;
+            background: #1a1a1a;
+            border-top: 1px solid #404040;
         }
 
         .current-prompt {
-            color: #00ff41;
-            margin-right: 10px;
-            text-shadow: 0 0 5px #00ff41;
+            color: #7dd3fc;
+            margin-right: 8px;
+            font-weight: 500;
         }
 
-        #terminal-input {
+        #input {
             background: transparent;
             border: none;
-            color: #64ffda;
+            color: #ffffff;
             font-family: inherit;
-            font-size: inherit;
+            font-size: 14px;
             outline: none;
             flex: 1;
-            caret-color: #00ff41;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 20px;
-            background: #00ff41;
-            animation: blink 1s infinite;
-            margin-left: 2px;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        .ascii-art {
-            color: #00ff41;
-            font-size: clamp(6px, 2vw, 12px);
-            line-height: 1.2;
-            text-shadow: 0 0 5px #00ff41;
-            margin: 10px 0;
-            overflow-x: auto;
-            white-space: pre;
+            caret-color: #7dd3fc;
         }
 
         .welcome-header {
             text-align: center;
-            margin: 20px 0;
+            margin: 20px 0 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(125, 211, 252, 0.1) 0%, rgba(196, 132, 252, 0.1) 100%);
+            border-radius: 8px;
+            border: 1px solid rgba(125, 211, 252, 0.2);
         }
 
         .welcome-title {
-            color: #00ff41;
-            font-size: clamp(18px, 4vw, 28px);
-            font-weight: bold;
-            text-shadow: 0 0 10px #00ff41;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
+            color: #ffffff;
+            font-size: clamp(20px, 4vw, 32px);
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
         }
 
         .welcome-subtitle {
-            color: #64ffda;
-            font-size: clamp(12px, 2.5vw, 16px);
-            margin-bottom: 5px;
+            color: #7dd3fc;
+            font-size: clamp(14px, 2.5vw, 18px);
+            margin-bottom: 15px;
+            font-weight: 400;
         }
 
         .welcome-decoration {
-            color: #00ff41;
+            color: rgba(125, 211, 252, 0.6);
             font-size: clamp(10px, 2vw, 14px);
-            margin: 10px 0;
-        }
-
-        .file-tree {
-            margin-left: 20px;
-        }
-
-        .file-item {
-            color: #64ffda;
-            margin: 2px 0;
-        }
-
-        .folder-item {
-            color: #ffd93d;
-            margin: 2px 0;
-        }
-
-        .skill-bar {
-            display: flex;
-            align-items: center;
-            margin: 5px 0;
-        }
-
-        .skill-name {
-            color: #64ffda;
-            width: 120px;
-        }
-
-        .skill-progress {
-            width: 200px;
-            height: 10px;
-            background: #16213e;
-            border-radius: 5px;
-            overflow: hidden;
-            margin: 0 10px;
-        }
-
-        .skill-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #00ff41, #64ffda);
-            border-radius: 5px;
-            transition: width 2s ease;
+            margin: 15px 0;
         }
 
         .help-command {
-            color: #64ffda;
+            color: #7dd3fc;
             margin: 2px 0;
         }
 
-        .help-description {
-            color: #e0e0e0;
-            margin-left: 20px;
-            margin-bottom: 5px;
+        /* Scrollbar styling for macOS look */
+        .terminal-body::-webkit-scrollbar {
+            width: 8px;
         }
 
-        .project-item {
-            margin: 10px 0;
-            padding: 10px;
-            border-left: 3px solid #00ff41;
-            background: rgba(0, 255, 65, 0.1);
+        .terminal-body::-webkit-scrollbar-track {
+            background: transparent;
         }
 
-        .project-title {
-            color: #00ff41;
-            font-weight: bold;
+        .terminal-body::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
         }
 
-        .project-description {
-            color: #e0e0e0;
-            margin: 5px 0;
-        }
-
-        .project-tech {
-            color: #64ffda;
-            font-size: 14px;
+        .terminal-body::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
-            .terminal-body {
+            body {
                 padding: 10px;
-                font-size: 12px;
             }
             
-            .ascii-art {
-                font-size: 6px;
-                overflow-x: auto;
+            .terminal-container {
+                height: calc(100vh - 20px);
             }
             
-            .skill-progress {
-                width: 100px;
-            }
-            
-            .skill-name {
-                width: 80px;
-                font-size: 12px;
+            .terminal-body {
+                padding: 15px;
+                font-size: 13px;
             }
             
             .welcome-decoration {
@@ -288,45 +232,61 @@
         }
 
         @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
             .terminal-header {
-                padding: 8px 10px;
+                padding: 10px 12px;
             }
             
             .terminal-title {
                 font-size: 12px;
             }
             
-            .ascii-art {
-                font-size: 4px;
-                margin: 5px 0;
-            }
-            
             .welcome-title {
-                font-size: 16px;
+                font-size: 18px;
                 letter-spacing: 1px;
             }
             
             .welcome-subtitle {
-                font-size: 12px;
+                font-size: 14px;
+            }
+            
+            .input-line {
+                padding: 12px 15px;
             }
         }
 
-        /* Scrollbar styling */
-        .terminal-body::-webkit-scrollbar {
-            width: 8px;
+        /* Add subtle animations */
+        .terminal-container {
+            animation: slideIn 0.3s ease-out;
         }
 
-        .terminal-body::-webkit-scrollbar-track {
-            background: #16213e;
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .terminal-body::-webkit-scrollbar-thumb {
-            background: #00ff41;
-            border-radius: 4px;
+        .output-line {
+            animation: fadeIn 0.2s ease-in;
         }
 
-        .terminal-body::-webkit-scrollbar-thumb:hover {
-            background: #64ffda;
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateX(-5px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0);
+            }
         }
     </style>
 </head>
@@ -338,30 +298,19 @@
                 <div class="control-btn minimize"></div>
                 <div class="control-btn maximize"></div>
             </div>
-            <div class="terminal-title">john@portfolio:~$ Interactive Terminal Portfolio</div>
+            <div class="terminal-title">chris@portfolio:~$ Interactive Terminal Portfolio</div>
         </div>
         
-        <div class="terminal-body" id="terminal-output">
+        <div class="terminal-body" id="output">
             <div class="welcome-header">
-                <div class="welcome-title">JOHN DEVELOPER</div>
-                <div class="welcome-subtitle">Full-Stack Software Engineer</div>
-                <div class="welcome-decoration">
-                    ═══════════════════════════════════════════════
-                </div>
-                <div class="ascii-art">
-    ░░░██╗░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗░░
-    ░░░██║░░░░██║██╔════╝██║░░░░██╔══██╗██╔══██╗████╗░████║░░
-    ░░░██║░█╗░██║█████╗░░██║░░░░██║░░╚═╝██║░░██║██╔████╔██║░░
-    ░░░██║███╗██║██╔══╝░░██║░░░░██║░░██╗██║░░██║██║╚██╔╝██║░░
-    ░░░╚███╔███╔╝███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║░░
-    ░░░░╚══╝╚══╝░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝░░
-                </div>
+                <div class="welcome-title">CHRIS JENNINGS</div>
+                <div class="welcome-subtitle">Full-Stack Software Developer</div>
                 <div class="welcome-decoration">
                     ═══════════════════════════════════════════════
                 </div>
             </div>
             
-            <div class="output-line success">Welcome to John Developer's Interactive Terminal Portfolio!</div>
+            <div class="output-line success">Welcome to Chris Jennings' Interactive Terminal Portfolio!</div>
             <div class="output-line text">System initialized successfully...</div>
             <div class="output-line info">Type 'help' to see available commands or 'about' to learn more about me.</div>
             <div class="output-line text">Navigate using terminal commands - this is a fully interactive experience!</div>
@@ -369,36 +318,274 @@
         </div>
         
         <div class="input-line">
-            <span class="current-prompt">john@portfolio:~$</span>
-            <input type="text" id="terminal-input" autocomplete="off" autofocus>
-            <span class="cursor"></span>
+            <span class="current-prompt">chris@portfolio:~$</span>
+            <input type="text" id="input" autocomplete="off" autofocus>
         </div>
     </div>
 
     <script>
-        // Simple terminal functionality
-        let output, input, commandHistory = [], historyIndex = -1, currentPath = '~';
+        // Get elements
+        const output = document.getElementById('output');
+        const input = document.getElementById('input');
+        let commandHistory = [];
+        let historyIndex = -1;
 
-        function init() {
-            output = document.getElementById('terminal-output');
-            input = document.getElementById('terminal-input');
-            
-            input.addEventListener('keydown', handleKeyDown);
-            input.focus();
-            
-            // Keep input focused
-            document.addEventListener('click', () => {
-                input.focus();
-            });
+        // Add output function
+        function addOutput(text, className = 'text') {
+            const line = document.createElement('div');
+            line.className = `output-line ${className}`;
+            line.innerHTML = text;
+            output.appendChild(line);
+            output.scrollTop = output.scrollHeight;
         }
 
-        function handleKeyDown(e) {
+        // Command functions
+        function helpCommand() {
+            addOutput('Available Commands:', 'success');
+            addOutput('');
+            addOutput('about     - Learn about Chris Jennings', 'help-command');
+            addOutput('skills    - View technical skills', 'help-command');
+            addOutput('projects  - Browse featured projects', 'help-command');
+            addOutput('experience - View professional experience', 'help-command');
+            addOutput('education - View education background', 'help-command');
+            addOutput('contact   - Get contact information', 'help-command');
+            addOutput('resume    - View resume', 'help-command');
+            addOutput('social    - Social media links', 'help-command');
+            addOutput('ls        - List directory contents', 'help-command');
+            addOutput('pwd       - Print current directory', 'help-command');
+            addOutput('whoami    - Display current user', 'help-command');
+            addOutput('clear     - Clear terminal screen', 'help-command');
+            addOutput('tree      - Show directory structure', 'help-command');
+        }
+
+        function aboutCommand() {
+            addOutput('About Chris Jennings', 'success');
+            addOutput('');
+            addOutput('<span class="highlight">Full-Stack Software Developer</span>');
+            addOutput('<span class="text">🌍 Based in Dublin, Ireland</span>');
+            addOutput('<span class="text">💼 5+ years of professional experience</span>');
+            addOutput('<span class="text">🎓 Computer Applications, Dublin City University (2:1)</span>');
+            addOutput('<span class="text">🎂 Born June 21st, 1999</span>');
+            addOutput('');
+            addOutput('Passionate and energetic software developer with experience working in');
+            addOutput('fast-paced agile environments. Keen interest in AI, cryptography,');
+            addOutput('security, and web development.');
+            addOutput('');
+            addOutput('<span class="info">Specialties: Electronic Document Management, AI Integration, Microservices</span>');
+        }
+
+        function skillsCommand() {
+            addOutput('Technical Skills', 'success');
+            addOutput('');
+            addOutput('<span class="highlight">Frontend:</span>');
+            addOutput('<span class="highlight">Vue.js:</span> <span class="info">██████████████████ 90%</span>');
+            addOutput('<span class="highlight">Angular:</span> <span class="info">█████████████████ 88%</span>');
+            addOutput('<span class="highlight">React:</span> <span class="info">███████████████ 80%</span>');
+            addOutput('<span class="highlight">TypeScript:</span> <span class="info">█████████████████ 85%</span>');
+            addOutput('<span class="highlight">JavaScript:</span> <span class="info">████████████████████ 95%</span>');
+            addOutput('<span class="highlight">HTML/CSS:</span> <span class="info">████████████████████ 95%</span>');
+            addOutput('');
+            addOutput('<span class="highlight">Backend:</span>');
+            addOutput('<span class="highlight">.NET Core:</span> <span class="info">█████████████████ 88%</span>');
+            addOutput('<span class="highlight">C#:</span> <span class="info">█████████████████ 85%</span>');
+            addOutput('<span class="highlight">Node.js:</span> <span class="info">███████████████ 80%</span>');
+            addOutput('<span class="highlight">Python:</span> <span class="info">████████████████ 82%</span>');
+            addOutput('');
+            addOutput('<span class="highlight">Database & Cloud:</span>');
+            addOutput('<span class="highlight">MS SQL Server:</span> <span class="info">█████████████████ 85%</span>');
+            addOutput('<span class="highlight">MySQL:</span> <span class="info">███████████████ 80%</span>');
+            addOutput('<span class="highlight">AWS:</span> <span class="info">██████████████ 75%</span>');
+        }
+
+        function projectsCommand() {
+            addOutput('Featured Projects', 'success');
+            addOutput('');
+            addOutput('<span class="highlight">⚙️ Electronic Document Management System (Xerox)</span>');
+            addOutput('Leading development of enterprise document management platform');
+            addOutput('with AI integration and microservices architecture');
+            addOutput('<span class="info">Tech: Vue.js, .NET Core, MS SQL Server, Microservices</span>');
+            addOutput('');
+            addOutput('<span class="highlight">⚽ Soccer Event Detection AI</span>');
+            addOutput('ML model for automatic event detection in soccer videos');
+            addOutput('with web interface for video upload and highlight generation');
+            addOutput('<span class="info">Tech: Python, TensorFlow, Angular, Node.js</span>');
+            addOutput('');
+            addOutput('<span class="highlight">🏢 Pharmaceutical Compliance Platform (IRLCA)</span>');
+            addOutput('Industry regulation-compliant web application with OAuth 2.0');
+            addOutput('identity management and electronic signature system');
+            addOutput('<span class="info">Tech: Angular, C#, ASP.NET, MS SQL, AWS, OKTA</span>');
+        }
+
+        function experienceCommand() {
+            addOutput('Professional Experience', 'success');
+            addOutput('');
+            addOutput('<span class="highlight">Full-Stack Software Developer @ Xerox</span>');
+            addOutput('2022 - Present | Dublin, Ireland');
+            addOutput('• Leading development of electronic document management system');
+            addOutput('• Implementing AI features and microservices architecture');
+            addOutput('• Working with Vue.js frontend and .NET Core backend');
+            addOutput('• Managing MS SQL Server databases and optimizing performance');
+            addOutput('• Leading project teams and mentoring junior developers');
+            addOutput('');
+            addOutput('<span class="highlight">Full-Stack Software Developer @ IRLCA</span>');
+            addOutput('May 2019 - April 2022 | Dublin, Ireland');
+            addOutput('• 70% frontend development with Angular/TypeScript/SCSS');
+            addOutput('• 30% backend development with C#/ASP.NET/MS SQL');
+            addOutput('• Implemented OAuth 2.0 and electronic signature systems');
+            addOutput('• Designed and deployed AWS infrastructure (EC2, VPC, Backup)');
+            addOutput('• Test-driven development using Karma JavaScript testing');
+        }
+
+        function contactCommand() {
+            addOutput('Contact Information', 'success');
+            addOutput('');
+            addOutput('<span class="highlight">📧 Email:</span> <span class="info">chrisjennings214@gmail.com</span>');
+            addOutput('<span class="highlight">📱 Phone:</span> <span class="info">+353 85 245 2780</span>');
+            addOutput('<span class="highlight">🌍 Location:</span> Dublin, Ireland');
+            addOutput('<span class="highlight">💼 LinkedIn:</span> <span class="info">linkedin.com/in/chrisjennings214</span>');
+            addOutput('<span class="highlight">🐙 GitHub:</span> <span class="info">github.com/chrisjennings214</span>');
+            addOutput('');
+            addOutput('<span class="text">Available for new opportunities and collaborations!</span>');
+        }
+
+        function resumeCommand() {
+            addOutput('Resume', 'success');
+            addOutput('');
+            addOutput('📄 Chris_Jennings_Resume.pdf - Available for download');
+            addOutput('<span class="info">$ wget https://chrisjennings.dev/resume.pdf</span>');
+            addOutput('');
+            addOutput('Quick Summary:');
+            addOutput('• 5+ years Full-Stack Development');
+            addOutput('• Expertise in Vue.js, Angular, .NET Core');
+            addOutput('• AI/ML project experience with TensorFlow');
+            addOutput('• AWS Cloud Architecture & Deployment');
+            addOutput('• Team Leadership & Project Management');
+            addOutput('• Computer Applications Degree (2:1) - DCU');
+        }
+
+        function socialCommand() {
+            addOutput('Social & Professional Links', 'success');
+            addOutput('');
+            addOutput('<span class="highlight">💼 Professional:</span>');
+            addOutput('   LinkedIn: https://linkedin.com/in/chrisjennings214');
+            addOutput('   GitHub: https://github.com/chrisjennings214');
+            addOutput('   Portfolio: https://chrisjennings.dev');
+            addOutput('');
+            addOutput('<span class="highlight">🎯 Interests:</span>');
+            addOutput('   AI & Machine Learning');
+            addOutput('   Cryptography & Security');
+            addOutput('   Web Development');
+            addOutput('   Soccer & Sports Analytics');
+        }
+
+        function lsCommand() {
+            addOutput('Directory Contents:', 'success');
+            addOutput('');
+            addOutput('<span class="info">📄 about.txt</span>');
+            addOutput('<span class="info">📄 skills.json</span>');
+            addOutput('<span class="info">📁 projects/</span>');
+            addOutput('<span class="info">📄 experience.log</span>');
+            addOutput('<span class="info">📄 contact.vcard</span>');
+            addOutput('<span class="info">📄 resume.pdf</span>');
+            addOutput('<span class="info">📄 education.md</span>');
+        }
+
+        function pwdCommand() {
+            addOutput('/home/chris/portfolio', 'info');
+        }
+
+        function whoamiCommand() {
+            addOutput('chris', 'success');
+            addOutput('Full-Stack Software Developer');
+            addOutput('Passionate about AI, security, and building scalable web applications');
+            addOutput('Currently leading projects at Xerox in Dublin, Ireland');
+        }
+
+        function clearCommand() {
+            output.innerHTML = '';
+        }
+
+        function treeCommand() {
+            addOutput('Directory Structure:', 'success');
+            addOutput('');
+            addOutput('<span class="info">~/</span>');
+            addOutput('├── about.txt');
+            addOutput('├── skills.json');
+            addOutput('├── projects/');
+            addOutput('│   ├── xerox_edms.md');
+            addOutput('│   ├── soccer_ai.md');
+            addOutput('│   └── pharmaceutical_platform.md');
+            addOutput('├── experience.log');
+            addOutput('├── contact.vcard');
+            addOutput('├── education.md');
+            addOutput('└── resume.pdf');
+        }
+
+        // Add a new education command
+        function educationCommand() {
+            addOutput('Education', 'success');
+            addOutput('');
+            addOutput('<span class="highlight">Computer Applications (2:1)</span>');
+            addOutput('Dublin City University | 2017 - 2021');
+            addOutput('');
+            addOutput('<span class="highlight">Relevant Coursework:</span>');
+            addOutput('• ARM Assembly & Operating Systems Architecture');
+            addOutput('• Object-Oriented & Functional Programming');
+            addOutput('• AI & Machine Learning Models');
+            addOutput('• Data Engineering & Analytics');
+            addOutput('• Computer Vision & Computational Linguistics');
+            addOutput('• Software Engineering & Project Management');
+            addOutput('• Database Design & Data Communication');
+            addOutput('• Cryptography & Security');
+            addOutput('• AWS Cloud Computing');
+            addOutput('');
+            addOutput('<span class="highlight">Secondary Education</span>');
+            addOutput('Castleknock Community College | 2012 - 2017');
+        }
+
+        // Command mapping
+        const commands = {
+            'help': helpCommand,
+            'about': aboutCommand,
+            'skills': skillsCommand,
+            'projects': projectsCommand,
+            'experience': experienceCommand,
+            'contact': contactCommand,
+            'resume': resumeCommand,
+            'social': socialCommand,
+            'education': educationCommand,
+            'ls': lsCommand,
+            'pwd': pwdCommand,
+            'whoami': whoamiCommand,
+            'clear': clearCommand,
+            'tree': treeCommand
+        };
+
+        // Execute command
+        function executeCommand(commandText) {
+            // Show the command that was typed
+            addOutput(`<span class="prompt">chris@portfolio:~$</span> <span class="command">${commandText}</span>`);
+            
+            // Get the command (first word)
+            const cmd = commandText.trim().toLowerCase();
+            
+            // Execute the command
+            if (commands[cmd]) {
+                commands[cmd]();
+            } else {
+                addOutput(`Command not found: ${cmd}`, 'error');
+                addOutput('Type "help" to see available commands.');
+            }
+        }
+
+        // Handle input
+        input.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 const command = input.value.trim();
                 if (command) {
-                    executeCommand(command);
                     commandHistory.push(command);
                     historyIndex = commandHistory.length;
+                    executeCommand(command);
                 }
                 input.value = '';
             } else if (e.key === 'ArrowUp') {
@@ -417,138 +604,18 @@
                     input.value = '';
                 }
             }
-        }
+        });
 
-        function executeCommand(commandLine) {
-            addOutput(`<span class="prompt">john@portfolio:${currentPath}$</span> <span class="command">${commandLine}</span>`);
-            
-            const [command, ...args] = commandLine.split(' ');
-            
-            switch(command) {
-                case 'help':
-                    showHelp();
-                    break;
-                case 'about':
-                    showAbout();
-                    break;
-                case 'skills':
-                    showSkills();
-                    break;
-                case 'projects':
-                    showProjects();
-                    break;
-                case 'experience':
-                    showExperience();
-                    break;
-                case 'contact':
-                    showContact();
-                    break;
-                case 'resume':
-                    showResume();
-                    break;
-                case 'social':
-                    showSocial();
-                    break;
-                case 'ls':
-                    listDirectory();
-                    break;
-                case 'pwd':
-                    addOutput(`<span class="info">${currentPath}</span>`);
-                    break;
-                case 'whoami':
-                    addOutput('<span class="success">john</span>');
-                    addOutput('<span class="text">Full-Stack Software Engineer</span>');
-                    break;
-                case 'clear':
-                    output.innerHTML = '';
-                    return;
-                case 'tree':
-                    showTree();
-                    break;
-                default:
-                    addOutput(`<span class="error">Command not found: ${command}</span>`);
-                    addOutput(`<span class="text">Type 'help' to see available commands.</span>`);
-            }
-            
-            scrollToBottom();
-        }
+        // Keep input focused
+        document.addEventListener('click', function() {
+            input.focus();
+        });
 
-        function addOutput(html) {
-            const div = document.createElement('div');
-            div.className = 'output-line';
-            div.innerHTML = html;
-            output.appendChild(div);
-        }
+        // Initial focus
+        input.focus();
 
-        function scrollToBottom() {
-            output.scrollTop = output.scrollHeight;
-        }
-
-        function showHelp() {
-            addOutput('<span class="success">Available Commands:</span>');
-            addOutput('');
-            addOutput('<span class="help-command">about</span> - Learn about John Developer');
-            addOutput('<span class="help-command">skills</span> - View technical skills');
-            addOutput('<span class="help-command">projects</span> - Browse featured projects');
-            addOutput('<span class="help-command">experience</span> - View professional experience');
-            addOutput('<span class="help-command">contact</span> - Get contact information');
-            addOutput('<span class="help-command">resume</span> - View resume');
-            addOutput('<span class="help-command">social</span> - Social media links');
-            addOutput('<span class="help-command">ls</span> - List directory contents');
-            addOutput('<span class="help-command">pwd</span> - Print current directory');
-            addOutput('<span class="help-command">whoami</span> - Display current user');
-            addOutput('<span class="help-command">clear</span> - Clear terminal screen');
-            addOutput('<span class="help-command">tree</span> - Show directory structure');
-        }
-
-        function showAbout() {
-            addOutput('<span class="success">About John Developer</span>');
-            addOutput('');
-            addOutput('<span class="highlight">Full-Stack Software Engineer</span>');
-            addOutput('<span class="text">🌍 Based in San Francisco, CA</span>');
-            addOutput('<span class="text">💼 5+ years of professional experience</span>');
-            addOutput('<span class="text">🎓 Computer Science, Stanford University</span>');
-            addOutput('');
-            addOutput('<span class="text">I\'m a passionate developer who loves building scalable web applications</span>');
-            addOutput('<span class="text">and exploring cutting-edge technologies.</span>');
-        }
-
-        function showSkills() {
-            addOutput('<span class="success">Technical Skills</span>');
-            addOutput('');
-            addOutput('<span class="highlight">JavaScript:</span> <span class="info">████████████████████ 95%</span>');
-            addOutput('<span class="highlight">React:</span> <span class="info">██████████████████ 90%</span>');
-            addOutput('<span class="highlight">Node.js:</span> <span class="info">█████████████████ 88%</span>');
-            addOutput('<span class="highlight">Python:</span> <span class="info">████████████████ 85%</span>');
-            addOutput('<span class="highlight">TypeScript:</span> <span class="info">███████████████ 82%</span>');
-            addOutput('<span class="highlight">PostgreSQL:</span> <span class="info">███████████████ 80%</span>');
-            addOutput('<span class="highlight">AWS:</span> <span class="info">██████████████ 78%</span>');
-            addOutput('<span class="highlight">Docker:</span> <span class="info">██████████████ 75%</span>');
-        }
-
-        function showProjects() {
-            addOutput('<span class="success">Featured Projects</span>');
-            addOutput('');
-            addOutput('<span class="highlight">🚀 E-Commerce Platform</span>');
-            addOutput('<span class="text">Full-stack solution with microservices architecture</span>');
-            addOutput('<span class="info">Tech: React, Node.js, PostgreSQL, AWS</span>');
-            addOutput('');
-            addOutput('<span class="highlight">📊 Analytics Dashboard</span>');
-            addOutput('<span class="text">Interactive business intelligence dashboard</span>');
-            addOutput('<span class="info">Tech: Vue.js, D3.js, Python, MongoDB</span>');
-            addOutput('');
-            addOutput('<span class="highlight">🤖 AI Chat Application</span>');
-            addOutput('<span class="text">Real-time chat with AI-powered responses</span>');
-            addOutput('<span class="info">Tech: TypeScript, Socket.io, OpenAI API</span>');
-        }
-
-        function showExperience() {
-            addOutput('<span class="success">Professional Experience</span>');
-            addOutput('');
-            addOutput('<span class="highlight">Senior Full-Stack Developer @ TechCorp Inc.</span>');
-            addOutput('<span class="text">2022 - Present | San Francisco, CA</span>');
-            addOutput('<span class="text">• Led microservices architecture for 1M+ users</span>');
-            addOutput('<span class="text">• Implemented CI/CD pipelines</span>');
-            addOutput('');
-            addOutput('<span class="highlight">Full-Stack Developer @ StartupXYZ</span>');
-            addOutput('<span class="text">2020 - 2022 | San Francisco, CA
+        // Test that JavaScript is working
+        console.log('Terminal initialized successfully!');
+    </script>
+</body>
+</html>
